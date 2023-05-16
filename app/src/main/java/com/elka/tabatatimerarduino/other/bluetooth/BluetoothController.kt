@@ -22,6 +22,10 @@ class BluetoothController(
     mConnectionThread?.start()
   }
 
+  fun sendMessage(message: String) {
+    mConnectionThread?.sendMessage(message)
+  }
+
   fun disconnect() {
     mConnectionThread?.closeConnection()
   }
@@ -32,6 +36,8 @@ class BluetoothController(
       fun onConnected()
       fun onFailConnect()
       fun onCloseConnection()
+
+      fun onFetchMessage(message: String)
     }
   }
 }

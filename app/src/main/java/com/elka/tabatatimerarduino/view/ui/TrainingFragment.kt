@@ -51,6 +51,10 @@ class TrainingFragment : BaseFragment() {
         }
       }
 
+      override fun onFetchMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+      }
+
       override fun onFailConnect() {
         activity?.runOnUiThread {
           Toast.makeText(requireContext(), "Fail connect", Toast.LENGTH_SHORT).show()
@@ -79,5 +83,9 @@ class TrainingFragment : BaseFragment() {
 
   fun disconnect() {
     connection.disconnect()
+  }
+
+  fun sendMessage() {
+    connection.sendMessage("1, 5, 3, 20, 5, 45")
   }
 }

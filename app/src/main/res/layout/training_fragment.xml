@@ -16,6 +16,7 @@
         style="@style/text.h1"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:onClick="@{() -> master.sendMessage()}"
         android:text="Device" />
   </LinearLayout>
 </layout>
