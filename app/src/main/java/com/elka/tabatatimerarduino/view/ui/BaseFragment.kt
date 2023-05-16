@@ -1,6 +1,7 @@
 package com.elka.tabatatimerarduino.view.ui
 
 import androidx.fragment.app.Fragment
+import com.elka.tabatatimerarduino.TabataTimerApplication
 import com.elka.tabatatimerarduino.other.Work
 
 open class BaseFragment: Fragment() {
@@ -8,4 +9,6 @@ open class BaseFragment: Fragment() {
     w1.isEmpty() -> false
     else -> w1.map { item -> if (works.contains(item)) 1 else 0 }.reduce { a, b -> a + b } > 0
   }
+
+  val bluetoothWorker by lazy { (requireActivity().application as TabataTimerApplication).bluetoothWorker }
 }
