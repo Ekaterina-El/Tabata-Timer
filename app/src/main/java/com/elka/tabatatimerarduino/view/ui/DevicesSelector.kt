@@ -17,6 +17,7 @@ import com.elka.tabatatimerarduino.databinding.DevicesSelectorFragmentBinding
 import com.elka.tabatatimerarduino.service.models.BluetoothDevice
 import com.elka.tabatatimerarduino.view.list.bluetoothDevices.BluetoothDeviceViewHolder
 import com.elka.tabatatimerarduino.view.list.bluetoothDevices.BluetoothDevicesAdapter
+import com.elka.tabatatimerarduino.view.list.bluetoothDevices.MarginItemDecoration
 import com.elka.tabatatimerarduino.viewModel.DevicesSelectorViewModel
 
 class DevicesSelector : BaseFragment() {
@@ -52,13 +53,13 @@ class DevicesSelector : BaseFragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    val decorator = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
-    binding.devicesList.addItemDecoration(decorator)
+    // Add divider decorator for list
+    val dividerDecorator = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
+    binding.devicesList.addItemDecoration(dividerDecorator)
 
+    // Setting refresh layout
     val refresherColor = requireContext().getColor(R.color.accent)
-    val swipeRefreshListener =
-      SwipeRefreshLayout.OnRefreshListener { reloadBluetoothDevices() }
-
+    val swipeRefreshListener = SwipeRefreshLayout.OnRefreshListener { reloadBluetoothDevices() }
     binding.refresher.setColorSchemeColors(refresherColor)
     binding.refresher.setOnRefreshListener(swipeRefreshListener)
   }
@@ -75,6 +76,7 @@ class DevicesSelector : BaseFragment() {
 
     viewModel.bluetoothDevices.removeObserver(bluetoothDevicesObserver)
   }
+
   @SuppressLint("MissingPermission")
   private fun reloadBluetoothDevices() {
     val bluetoothManager =
@@ -82,10 +84,10 @@ class DevicesSelector : BaseFragment() {
     val bluetoothAdapter = bluetoothManager.adapter
 
     val boundedDevices = bluetoothAdapter.bondedDevices.mapNotNull {
-        BluetoothDevice(
-          name = it.name,
-          mac = it.address,
-        )
+      BluetoothDevice(
+        name = it.name,
+        mac = it.address,
+      )
     }
     viewModel.setBluetoothDevices(boundedDevices)
   }

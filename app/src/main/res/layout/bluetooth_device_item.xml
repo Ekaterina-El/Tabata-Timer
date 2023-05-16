@@ -24,7 +24,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="5dp"
-        tools:paddingVertical="5dp">
+        android:paddingVertical="@dimen/devision_item_mv">
 
       <ImageView
           android:layout_width="26dp"
