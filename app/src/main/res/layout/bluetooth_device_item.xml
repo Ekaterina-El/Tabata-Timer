@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+        name="device"
+        type="com.elka.tabatatimerarduino.service.models.BluetoothDevice" />
+  </data>
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:clickable="true"
+      android:focusable="true"
+      android:foreground="?android:attr/selectableItemBackground"
+      android:layout_height="wrap_content"
+      app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="5dp"
+        tools:paddingVertical="5dp">
+
+      <ImageView
+          android:layout_width="26dp"
+          android:layout_height="26dp"
+          android:src="@drawable/ic_bluetooth"
+          app:tint="@color/accent" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:orientation="vertical">
+
+        <TextView
+            style="@style/text.h3"
+            android:text="@{device.name}"
+            tools:text="HC-05" />
+
+        <TextView
+            style="@style/text.hint"
+            android:text="@{device.mac}"
+            tools:text="00:1b:63:84:45:e6" />
+      </LinearLayout>
+    </LinearLayout>
+
+  </androidx.cardview.widget.CardView>
+</layout>

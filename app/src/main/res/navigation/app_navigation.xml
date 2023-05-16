@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/devicesSelector">
+
+  <fragment
+      tools:layout="@layout/devices_selector_fragment"
+      android:id="@+id/devicesSelector"
+      android:name="com.elka.tabatatimerarduino.view.ui.DevicesSelector"
+      android:label="DevicesSelector" />
+</navigation>

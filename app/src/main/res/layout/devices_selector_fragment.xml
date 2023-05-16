@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+    <variable
+        name="adapter"
+        type="com.elka.tabatatimerarduino.view.list.bluetoothDevices.BluetoothDevicesAdapter" />
+
+    <variable
+        name="master"
+        type="com.elka.tabatatimerarduino.view.ui.DevicesSelector" />
+
+    <variable
+        name="viewModel"
+        type="com.elka.tabatatimerarduino.viewModel.DevicesSelectorViewModel" />
+  </data>
+
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:id="@+id/refresher"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/app_padding"
+          android:layout_marginTop="15dp"
+          android:layout_marginBottom="10dp"
+          android:gravity="center"
+          android:orientation="horizontal">
+
+        <TextView
+            style="@style/title"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/select_bluetooth_device" />
+      </LinearLayout>
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/devicesList"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:adapter="@{adapter}"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          tools:listitem="@layout/bluetooth_device_item" />
+    </LinearLayout>
+
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>
