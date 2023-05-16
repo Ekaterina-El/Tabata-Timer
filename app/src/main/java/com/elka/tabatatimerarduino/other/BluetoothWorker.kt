@@ -38,8 +38,8 @@ class BluetoothWorker(private val context: Context) {
     }
   }
 
-  fun connectWith(device: BluetoothDevice) {
-    bluetoothController.connect(device)
+  fun connectWith(device: BluetoothDevice, listener: BluetoothController.Companion.Listener) {
+    bluetoothController.connect(device, listener)
   }
 }
 

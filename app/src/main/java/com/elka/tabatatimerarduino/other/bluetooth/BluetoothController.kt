@@ -7,16 +7,31 @@ import com.elka.tabatatimerarduino.service.models.BluetoothDevice
 import java.util.*
 
 @SuppressLint("MissingPermission")
-class BluetoothController(private val bluetoothAdapter: BluetoothAdapter) {
-  private lateinit var mConnectionThread: ConnectionThread
+class BluetoothController(
+  private val bluetoothAdapter: BluetoothAdapter,
+) {
+  private var mConnectionThread: ConnectionThread? = null
 
-  fun connect( device: BluetoothDevice) {
+  fun connect(device: BluetoothDevice, listener: Listener) {
     if (!bluetoothAdapter.isEnabled) return
 
     val bluetoothDevice = bluetoothAdapter.getRemoteDevice(device.mac)
     val uuid = bluetoothDevice.uuids[0].uuid
 
-    mConnectionThread = ConnectionThread(bluetoothDevice, uuid)
-    mConnectionThread.start()
+    mConnectionThread = ConnectionThread(listener, bluetoothDevice, uuid)
+    mConnectionThread?.start()
+  }
+
+  fun disconnect() {
+    mConnectionThread?.closeConnection()
+  }
+
+  companion object {
+    interface Listener {
+      fun onStartConnection()
+      fun onConnected()
+      fun onFailConnect()
+      fun onCloseConnection()
+    }
   }
 }

@@ -1,15 +1,19 @@
 package com.elka.tabatatimerarduino.other
 
 import android.annotation.SuppressLint
-import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.util.Log
+import com.elka.tabatatimerarduino.other.bluetooth.BluetoothController
 import java.util.*
 
 
 @SuppressLint("MissingPermission")
-class ConnectionThread(private val bluetoothDevice: BluetoothDevice, uuid: UUID) :
+class ConnectionThread(
+  private val listener: BluetoothController.Companion.Listener,
+  bluetoothDevice: BluetoothDevice,
+  uuid: UUID
+) :
   Thread() {
   private var mSocket: BluetoothSocket? = null
 
@@ -22,21 +26,19 @@ class ConnectionThread(private val bluetoothDevice: BluetoothDevice, uuid: UUID)
 
   override fun run() {
     try {
-      Log.d(TAG, "Connecting...")
+      listener.onStartConnection()
       mSocket?.connect()
-      Log.d(TAG, "Connected")
+      listener.onConnected()
     } catch (e: java.lang.Exception) {
-      Log.d(TAG, "No conndected")
+      listener.onFailConnect()
     }
   }
 
   fun closeConnection() {
     try {
       mSocket?.close()
-    } catch (e: java.lang.Exception) {}
-  }
-
-  companion object {
-    const val TAG = "ConnectionThread"
+      listener.onCloseConnection()
+    } catch (e: java.lang.Exception) {
+    }
   }
 }
