@@ -9,7 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import com.elka.tabatatimerarduino.databinding.TrainingFragmentBinding
 import com.elka.tabatatimerarduino.other.bluetooth.BluetoothController
 
-class TrainingFragment(enabled: Boolean) : BaseFragment() {
+class TrainingFragment() : BaseFragment() {
   private lateinit var binding: TrainingFragmentBinding
   private lateinit var connection: BluetoothController
 
