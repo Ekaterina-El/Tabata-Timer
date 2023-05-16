@@ -9,5 +9,18 @@
       tools:layout="@layout/devices_selector_fragment"
       android:id="@+id/devicesSelector"
       android:name="com.elka.tabatatimerarduino.view.ui.DevicesSelector"
-      android:label="DevicesSelector" />
+      android:label="DevicesSelector" >
+    <action
+        android:id="@+id/action_devicesSelector_to_trainingFragment"
+        app:destination="@id/trainingFragment" />
+  </fragment>
+  <fragment
+      tools:layout="@layout/training_fragment"
+      android:id="@+id/trainingFragment"
+      android:name="com.elka.tabatatimerarduino.view.ui.TrainingFragment"
+      android:label="TrainingFragment" >
+    <argument
+        android:name="device"
+        app:argType="com.elka.tabatatimerarduino.service.models.BluetoothDevice" />
+  </fragment>
 </navigation>

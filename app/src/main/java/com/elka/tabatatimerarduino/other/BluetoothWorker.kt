@@ -4,10 +4,14 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
+import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.content.Intent
-import com.elka.tabatatimerarduino.TabataTimerApplication
+import android.util.Log
+import com.elka.tabatatimerarduino.other.bluetooth.BluetoothController
 import com.elka.tabatatimerarduino.service.models.BluetoothDevice
+import java.util.*
+
 
 class BluetoothWorker(private val context: Context) {
   private val bluetoothManager by lazy {
@@ -15,6 +19,7 @@ class BluetoothWorker(private val context: Context) {
   }
 
   private val bluetoothAdapter by lazy { bluetoothManager.adapter }
+  private val bluetoothController by lazy { BluetoothController(bluetoothAdapter) }
   val isOn: Boolean get() = bluetoothAdapter.isEnabled
 
   @SuppressLint("MissingPermission")
@@ -32,4 +37,9 @@ class BluetoothWorker(private val context: Context) {
       )
     }
   }
+
+  fun connectWith(device: BluetoothDevice) {
+    bluetoothController.connect(device)
+  }
 }
+

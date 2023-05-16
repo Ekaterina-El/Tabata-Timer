@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.elka.tabatatimerarduino.R
@@ -34,7 +35,8 @@ class DevicesSelector : BaseFragment() {
   private val bluetoothDevicesAdapter by lazy {
     BluetoothDevicesAdapter(object : BluetoothDeviceViewHolder.Companion.Listener {
       override fun onSelect(device: BluetoothDevice) {
-        Toast.makeText(requireContext(), "Mac: ${device.mac}", Toast.LENGTH_SHORT).show()
+        val action = DevicesSelectorDirections.actionDevicesSelectorToTrainingFragment(device)
+        navController.navigate(action)
       }
     })
   }
