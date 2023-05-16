@@ -9,6 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import com.elka.tabatatimerarduino.R
 import com.elka.tabatatimerarduino.databinding.TrainingFragmentBinding
 import com.elka.tabatatimerarduino.other.bluetooth.BluetoothController
+import com.elka.tabatatimerarduino.view.dialog.ConnectionDialog
 
 class TrainingFragment : BaseFragment() {
   private lateinit var binding: TrainingFragmentBinding
@@ -34,19 +35,21 @@ class TrainingFragment : BaseFragment() {
     })
 
     val args = TrainingFragmentArgs.fromBundle(requireArguments())
-    val connection = bluetoothWorker.connectWith(args.device, bluetoothConnectionListener)
+    bluetoothWorker.connectWith(args.device, bluetoothConnectionListener)
   }
 
   private val bluetoothConnectionListener by lazy {
     object : BluetoothController.Companion.Listener {
       override fun onStartConnection() {
         activity?.runOnUiThread {
+          showConnectionDialog()
           Toast.makeText(requireContext(), "Connection...", Toast.LENGTH_SHORT).show()
         }
       }
 
       override fun onConnected() {
         activity?.runOnUiThread {
+          hideConnectionDialog()
           Toast.makeText(requireContext(), "Connected", Toast.LENGTH_SHORT).show()
         }
       }
@@ -71,11 +74,21 @@ class TrainingFragment : BaseFragment() {
     }
   }
 
+  private val connectionDialog by lazy { ConnectionDialog(requireContext()) }
+  fun showConnectionDialog() {
+    connectionDialog.show()
+  }
+
+  fun hideConnectionDialog() {
+    connectionDialog.dismiss()
+  }
+
   private fun goBack() {
     navController.popBackStack()
   }
 
   fun showFailConnectionDialog() {
+    connectionDialog.dismiss()
     informDialog.open(getString(R.string.error), getString(R.string.connection_fail), false) {
       goBack()
     }
