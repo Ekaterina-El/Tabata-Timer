@@ -1,8 +1,6 @@
 package com.elka.tabatatimerarduino.view.ui
 
 import android.annotation.SuppressLint
-import android.bluetooth.BluetoothManager
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.elka.tabatatimerarduino.R
+import com.elka.tabatatimerarduino.TabataTimerApplication
 import com.elka.tabatatimerarduino.databinding.DevicesSelectorFragmentBinding
 import com.elka.tabatatimerarduino.service.models.BluetoothDevice
 import com.elka.tabatatimerarduino.view.list.bluetoothDevices.BluetoothDeviceViewHolder
 import com.elka.tabatatimerarduino.view.list.bluetoothDevices.BluetoothDevicesAdapter
-import com.elka.tabatatimerarduino.view.list.bluetoothDevices.MarginItemDecoration
 import com.elka.tabatatimerarduino.viewModel.DevicesSelectorViewModel
 
 class DevicesSelector : BaseFragment() {
@@ -79,16 +77,8 @@ class DevicesSelector : BaseFragment() {
 
   @SuppressLint("MissingPermission")
   private fun reloadBluetoothDevices() {
-    val bluetoothManager =
-      requireContext().getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-    val bluetoothAdapter = bluetoothManager.adapter
-
-    val boundedDevices = bluetoothAdapter.bondedDevices.mapNotNull {
-      BluetoothDevice(
-        name = it.name,
-        mac = it.address,
-      )
-    }
+    val boundedDevices =
+      (requireContext().applicationContext as TabataTimerApplication).bluetoothWorker.getBoundedDevices()
     viewModel.setBluetoothDevices(boundedDevices)
   }
 }
