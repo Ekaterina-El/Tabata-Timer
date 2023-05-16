@@ -5,6 +5,7 @@ import androidx.navigation.findNavController
 import com.elka.tabatatimerarduino.R
 import com.elka.tabatatimerarduino.TabataTimerApplication
 import com.elka.tabatatimerarduino.other.Work
+import com.elka.tabatatimerarduino.view.dialog.InformDialog
 
 open class BaseFragment: Fragment() {
   val navController by lazy {
@@ -16,4 +17,6 @@ open class BaseFragment: Fragment() {
   }
 
   val bluetoothWorker by lazy { (requireActivity().application as TabataTimerApplication).bluetoothWorker }
+
+  val informDialog by lazy { InformDialog(requireContext()) }
 }

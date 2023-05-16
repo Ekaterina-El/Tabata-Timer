@@ -3,4 +3,7 @@
   <string name="select_bluetooth_device">Select Bluetooth-device</string>
   <string name="no_paired_devices_detected_title">No paired devices detected.</string>
   <string name="no_paired_devices_detected_text">Go to the Bluetooth settings and pair with the Bluetooth device. Also make sure that the Bluetooth adapter is working properly</string>
+  <string name="error">It\'s not going according to plan…</string>
+  <string name="connection_fail">The connection to the Bluetooth device cannot be established</string>
+  <string name="okey">Okey</string>
 </resources>
