@@ -33,7 +33,9 @@
         android:orientation="horizontal">
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/cycles_back"
+          android:tag="back.cycles"
+          style="@style/triangle.left"
           android:src="@drawable/triangle_left" />
 
       <TextView
@@ -41,7 +43,9 @@
           tools:text="10" />
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/cycles_up"
+          android:tag="up.cycles"
+          style="@style/triangle.right"
           android:src="@drawable/triangle_right" />
     </LinearLayout>
 
@@ -58,7 +62,9 @@
         android:orientation="horizontal">
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/sets_back"
+          android:tag="back.sets"
+          style="@style/triangle.left"
           android:src="@drawable/triangle_left" />
 
       <TextView
@@ -66,7 +72,9 @@
           tools:text="10" />
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/sets_up"
+          android:tag="up.sets"
+          style="@style/triangle.right"
           android:src="@drawable/triangle_right" />
     </LinearLayout>
 
@@ -83,7 +91,9 @@
         android:orientation="horizontal">
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/work_back"
+          android:tag="back.work"
+          style="@style/triangle.left"
           android:src="@drawable/triangle_left" />
 
       <TextView
@@ -91,7 +101,9 @@
           tools:text="10" />
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/work_up"
+          android:tag="up.work"
+          style="@style/triangle.right"
           android:src="@drawable/triangle_right" />
     </LinearLayout>
 
@@ -108,7 +120,9 @@
         android:orientation="horizontal">
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/rest_back"
+          android:tag="back.rest"
+          style="@style/triangle.left"
           android:src="@drawable/triangle_left" />
 
       <TextView
@@ -116,7 +130,9 @@
           tools:text="10" />
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/rest_up"
+          android:tag="up.rest"
+          style="@style/triangle.right"
           android:src="@drawable/triangle_right" />
     </LinearLayout>
 
@@ -133,7 +149,9 @@
         android:orientation="horizontal">
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/rest_between_sets_back"
+          android:tag="back.rest_between_sets"
+          style="@style/triangle.left"
           android:src="@drawable/triangle_left" />
 
       <TextView
@@ -141,7 +159,9 @@
           tools:text="10" />
 
       <ImageView
-          style="@style/triangle"
+          android:id="@+id/rest_between_sets_up"
+          android:tag="up.rest_between_sets"
+          style="@style/triangle.right"
           android:src="@drawable/triangle_right" />
     </LinearLayout>
 

@@ -33,10 +33,20 @@
   </style>
 
   <style name="triangle">
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
     <item name="android:layout_width">30dp</item>
     <item name="android:layout_height">30dp</item>
     <item name="android:tint">@color/accent</item>
     <item name="android:contentDescription">@null</item>
+  </style>
+
+  <style name="triangle.left" parent="triangle">
+    <item name="android:src">@drawable/left_triangle_selector</item>
+  </style>
+
+  <style name="triangle.right" parent="triangle">
+<!--    <item name="android:drawable">@drawable/left_triangle_selector</item>-->
   </style>
 
   <style name="text.h2.bold" parent="text.h2">
