@@ -3,7 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
   <data>
-
+    <variable
+        name="master"
+        type="com.elka.tabatatimerarduino.view.ui.training.TrainingSettingFragment" />
+    <variable
+        name="viewModel"
+        type="com.elka.tabatatimerarduino.viewModel.TrainingViewModel" />
   </data>
 
   <LinearLayout
@@ -40,6 +45,7 @@
 
       <TextView
           style="@style/text.settings.value"
+          android:text="@{@string/int_to_text(viewModel.cycles)}"
           tools:text="10" />
 
       <ImageView
@@ -69,6 +75,7 @@
 
       <TextView
           style="@style/text.settings.value"
+          android:text="@{@string/int_to_text(viewModel.sets)}"
           tools:text="10" />
 
       <ImageView
@@ -98,6 +105,7 @@
 
       <TextView
           style="@style/text.settings.value"
+          android:text="@{@string/int_to_text(viewModel.workCycle)}"
           tools:text="10" />
 
       <ImageView
@@ -127,6 +135,7 @@
 
       <TextView
           style="@style/text.settings.value"
+          android:text="@{@string/int_to_text(viewModel.rest)}"
           tools:text="10" />
 
       <ImageView
@@ -156,6 +165,7 @@
 
       <TextView
           style="@style/text.settings.value"
+          android:text="@{@string/int_to_text(viewModel.restBetweenSets)}"
           tools:text="10" />
 
       <ImageView
@@ -167,13 +177,9 @@
 
     <Button
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/accent"
-        android:textColor="@color/white"
-        android:fontFamily="@font/montserrat_medium"
-        android:layout_width="wrap_content"
         android:paddingHorizontal="100dp"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="@string/lets_go" />
+        android:onClick="@{() -> master.startTrain()}"
+        android:text="@string/lets_go"
+        style="@style/button" />
   </LinearLayout>
 </layout>

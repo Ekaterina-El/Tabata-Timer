@@ -141,7 +141,7 @@ class DevicesSelector : BaseFragment() {
   }
 
   private fun checkBluetoothStatus(): Boolean {
-    val isOn = bluetoothWorker.isOn
+    val isOn = (requireActivity().application as TabataTimerApplication).isOn
     val lastBluetoothAdapterStatus = viewModel.bluetoothIsOn.value
     if (isOn != lastBluetoothAdapterStatus) viewModel.updateAdapterStatus(isOn)
     return isOn

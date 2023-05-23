@@ -10,6 +10,7 @@
   <string name="sets">Sets</string>
   <string name="work">Work</string>
   <string name="rets">Rest</string>
+  <string name="int_to_text">%d</string>
   <string name="rest_between_sets">Rest between sets</string>
   <string name="lets_go">Let\'s go it!</string>
   <string name="workout_setup">Workout setup</string>

@@ -1,13 +1,16 @@
 package com.elka.tabatatimerarduino.view.ui.training
 
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import com.elka.tabatatimerarduino.R
+import com.elka.tabatatimerarduino.TabataTimerApplication
 import com.elka.tabatatimerarduino.other.bluetooth.BluetoothController
 import com.elka.tabatatimerarduino.view.dialog.ConnectionDialog
 import com.elka.tabatatimerarduino.view.ui.BaseFragment
+import com.elka.tabatatimerarduino.viewModel.TrainingViewModel
 
 abstract class TrainingConnection: BaseFragment() {
-  protected lateinit var connection: BluetoothController
+  protected val viewModel by activityViewModels<TrainingViewModel>()
 
   protected val bluetoothConnectionListener by lazy {
     object : BluetoothController.Companion.Listener {
@@ -65,10 +68,16 @@ abstract class TrainingConnection: BaseFragment() {
   }
 
   fun disconnect() {
-    connection.disconnect()
+    (requireActivity().application as TabataTimerApplication).connection.disconnect()
   }
 
-  fun sendMessage() {
-    connection.sendMessage("1, 5, 3, 20, 5, 45")
+  fun sendMessage(message: String) {
+    (requireActivity().application as TabataTimerApplication).connection.sendMessage(message)
+  }
+
+  fun sendMessageToStartTrain(cycles: Int, sets: Int, work: Int, rest: Int, restBetweenSets: Int) {
+    val message = listOf(1, cycles, sets, work, rest, restBetweenSets).joinToString(", ")
+    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    sendMessage(message)
   }
 }
