@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
   <data>
 
     <variable
         name="master"
-        type="com.elka.tabatatimerarduino.view.ui.TrainingFragment" />
+        type="com.elka.tabatatimerarduino.view.ui.training.TrainingFragment" />
   </data>
 
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
-    <TextView
-        style="@style/text.h1"
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/trainingContainer"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:onClick="@{() -> master.sendMessage()}"
-        android:text="Device" />
+        android:layout_weight="1"
+        app:defaultNavHost="false"
+        app:navGraph="@navigation/training_navigation" />
   </LinearLayout>
 </layout>

@@ -6,4 +6,11 @@
   <string name="error">It\'s not going according to plan…</string>
   <string name="connection_fail">The connection to the Bluetooth device cannot be established</string>
   <string name="okey">Okey</string>
+  <string name="сycles">Cycles</string>
+  <string name="sets">Sets</string>
+  <string name="work">Work</string>
+  <string name="rets">Rest</string>
+  <string name="rest_between_sets">Rest between sets</string>
+  <string name="lets_go">Let\'s go it!</string>
+  <string name="workout_setup">Workout setup</string>
 </resources>

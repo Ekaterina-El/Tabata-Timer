@@ -1,44 +1,15 @@
-package com.elka.tabatatimerarduino.view.ui
+package com.elka.tabatatimerarduino.view.ui.training
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import com.elka.tabatatimerarduino.R
-import com.elka.tabatatimerarduino.databinding.TrainingFragmentBinding
 import com.elka.tabatatimerarduino.other.bluetooth.BluetoothController
 import com.elka.tabatatimerarduino.view.dialog.ConnectionDialog
+import com.elka.tabatatimerarduino.view.ui.BaseFragment
 
-class TrainingFragment : BaseFragment() {
-  private lateinit var binding: TrainingFragmentBinding
-  private lateinit var connection: BluetoothController
+abstract class TrainingConnection: BaseFragment() {
+  protected lateinit var connection: BluetoothController
 
-  override fun onCreateView(
-    inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-  ): View {
-    binding = TrainingFragmentBinding.inflate(layoutInflater, container, false)
-    binding.apply {
-      lifecycleOwner = viewLifecycleOwner
-      master = this@TrainingFragment
-    }
-    return binding.root
-  }
-
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
-      override fun handleOnBackPressed() {
-        disconnect()
-      }
-    })
-
-    val args = TrainingFragmentArgs.fromBundle(requireArguments())
-    bluetoothWorker.connectWith(args.device, bluetoothConnectionListener)
-  }
-
-  private val bluetoothConnectionListener by lazy {
+  protected val bluetoothConnectionListener by lazy {
     object : BluetoothController.Companion.Listener {
       override fun onStartConnection() {
         activity?.runOnUiThread {
@@ -73,8 +44,7 @@ class TrainingFragment : BaseFragment() {
       }
     }
   }
-
-  private val connectionDialog by lazy { ConnectionDialog(requireContext()) }
+  protected val connectionDialog by lazy { ConnectionDialog(requireContext()) }
   fun showConnectionDialog() {
     connectionDialog.show()
   }

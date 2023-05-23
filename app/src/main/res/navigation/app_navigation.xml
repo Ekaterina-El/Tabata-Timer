@@ -17,7 +17,7 @@
   <fragment
       tools:layout="@layout/training_fragment"
       android:id="@+id/trainingFragment"
-      android:name="com.elka.tabatatimerarduino.view.ui.TrainingFragment"
+      android:name="com.elka.tabatatimerarduino.view.ui.training.TrainingFragment"
       android:label="TrainingFragment" >
     <argument
         android:name="device"

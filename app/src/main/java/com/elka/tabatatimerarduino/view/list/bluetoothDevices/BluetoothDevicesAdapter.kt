@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.elka.tabatatimerarduino.databinding.BluetoothDeviceItemBinding
 import com.elka.tabatatimerarduino.service.models.BluetoothDevice
-import com.elka.tabatatimerarduino.view.BaseAdapter
 
 class BluetoothDevicesAdapter(private val listener: BluetoothDeviceViewHolder.Companion.Listener) :
   BaseAdapter<BluetoothDevice>() {

@@ -1,4 +1,4 @@
-package com.elka.tabatatimerarduino.view
+package com.elka.tabatatimerarduino.view.list.bluetoothDevices
 
 import androidx.recyclerview.widget.RecyclerView
 

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+  </data>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingHorizontal="@dimen/app_padding"
+      android:gravity="center"
+      android:orientation="vertical">
+
+    <TextView
+        style="@style/text.h1"
+        android:textColor="@color/accent"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:fontFamily="@font/rajdhani_bold"
+        android:text="@string/workout_setup" />
+
+    <TextView
+        style="@style/text.settings.title"
+        android:text="@string/сycles" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_left" />
+
+      <TextView
+          style="@style/text.settings.value"
+          tools:text="10" />
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_right" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        style="@style/text.settings.title"
+        android:text="@string/sets" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_left" />
+
+      <TextView
+          style="@style/text.settings.value"
+          tools:text="10" />
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_right" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="50dp"
+        style="@style/text.settings.title"
+        android:text="@string/work" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_left" />
+
+      <TextView
+          style="@style/text.settings.value"
+          tools:text="10" />
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_right" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        style="@style/text.settings.title"
+        android:text="@string/rets" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_left" />
+
+      <TextView
+          style="@style/text.settings.value"
+          tools:text="10" />
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_right" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        style="@style/text.settings.title"
+        android:text="@string/rest_between_sets" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_left" />
+
+      <TextView
+          style="@style/text.settings.value"
+          tools:text="10" />
+
+      <ImageView
+          style="@style/triangle"
+          android:src="@drawable/triangle_right" />
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/white"
+        android:fontFamily="@font/montserrat_medium"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="100dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="@string/lets_go" />
+  </LinearLayout>
+</layout>
