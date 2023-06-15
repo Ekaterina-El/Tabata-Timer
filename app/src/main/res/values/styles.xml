@@ -4,6 +4,7 @@
   <style name="text" parent="android:Widget.TextView">
     <item name="android:textColor">@color/on_primary</item>
     <item name="android:layout_width">match_parent</item>
+    <item name="android:textSize">14sp</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:fontFamily">@font/montserrat_regular</item>
   </style>
@@ -77,7 +78,7 @@
     <item name="android:paddingVertical">5dp</item>
   </style>
 
-  <style name="button">
+  <style name="button" parent="TextAppearance.AppCompat.Button">
     <item name="android:backgroundTint">@color/accent</item>
     <item name="android:textColor">@color/white</item>
     <item name="android:fontFamily">@font/montserrat_medium</item>

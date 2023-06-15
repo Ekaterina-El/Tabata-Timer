@@ -10,8 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
+import androidx.navigation.fragment.findNavController
 import com.elka.tabatatimerarduino.R
 import com.elka.tabatatimerarduino.databinding.TrainingSettingFragmentBinding
+import com.elka.tabatatimerarduino.service.models.TrainingState
 
 class TrainingSettingFragment : TrainingConnection() {
   private lateinit var binding: TrainingSettingFragmentBinding
@@ -131,5 +133,7 @@ class TrainingSettingFragment : TrainingConnection() {
     val rest = viewModel.rest.value!!
     val restBetweenSets = viewModel.restBetweenSets.value!!
     sendMessageToStartTrain(cycles, sets, work, rest, restBetweenSets)
+    findNavController().navigate(R.id.action_trainingSettingFragment_to_trainingProcessFragment)
+    viewModel.setTrainingState(TrainingState.TRAINING)
   }
 }

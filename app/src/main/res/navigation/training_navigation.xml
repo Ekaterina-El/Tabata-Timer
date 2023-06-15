@@ -9,5 +9,14 @@
       android:id="@+id/trainingSettingFragment"
       tools:layout="@layout/training_setting_fragment"
       android:name="com.elka.tabatatimerarduino.view.ui.training.TrainingSettingFragment"
-      android:label="TrainingSettingFragment" />
+      android:label="TrainingSettingFragment" >
+    <action
+        android:id="@+id/action_trainingSettingFragment_to_trainingProcessFragment"
+        app:destination="@id/trainingProcessFragment" />
+  </fragment>
+  <fragment
+      tools:layout="@layout/training_process_fragment"
+      android:id="@+id/trainingProcessFragment"
+      android:name="com.elka.tabatatimerarduino.view.ui.training.TrainingProcessFragment"
+      android:label="TrainingProcessFragment" />
 </navigation>

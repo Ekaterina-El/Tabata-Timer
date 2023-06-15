@@ -2,6 +2,7 @@ package com.elka.tabatatimerarduino.viewModel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import com.elka.tabatatimerarduino.service.models.TrainingState
 
 class TrainingViewModel(application: Application) : BaseViewModel(application) {
   private val _sets = MutableLiveData(3)
@@ -32,5 +33,11 @@ class TrainingViewModel(application: Application) : BaseViewModel(application) {
   val restBetweenSets get() = _restBetweenSets
   fun setRestBetweenSets(value: Int) {
     if (value >= 1) _restBetweenSets.value = value
+  }
+
+  private val _trainingState = MutableLiveData(TrainingState.NO_TRAINING)
+  val trainingState get() = _trainingState
+  fun setTrainingState(trainingState: TrainingState) {
+    _trainingState.value = trainingState
   }
 }

@@ -14,4 +14,12 @@
   <string name="rest_between_sets">Rest between sets</string>
   <string name="lets_go">Let\'s go it!</string>
   <string name="workout_setup">Workout setup</string>
+  <string name="training_session_is_active">Training session is active</string>
+  <string name="training_session_ended">Training session is ended</string>
+  <string name="training_session_paused_by_phone">Training session paused by phone</string>
+  <string name="training_session_paused_by_arduino">Training session paused by arduino</string>
+  <string name="sets_cycles">Sets: %1$d / Cycles: %2$d</string>
+  <string name="train_times">Work: %1$s / Rest: %2$s - %3$s</string>
+  <string name="resume_training_session">Resume</string>
+  <string name="pause_training_session">Pause</string>
 </resources>
