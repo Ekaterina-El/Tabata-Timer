@@ -4,19 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.fragment.findNavController
 import com.elka.tabatatimerarduino.databinding.TrainingProcessFragmentBinding
 import com.elka.tabatatimerarduino.service.models.TrainingState
-import com.elka.tabatatimerarduino.viewModel.TrainingViewModel
 
-class TrainingProcessFragment: TrainingConnection() {
+class TrainingProcessFragment : TrainingConnection() {
   private lateinit var binding: TrainingProcessFragmentBinding
 
   override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
+    inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
   ): View {
     binding = TrainingProcessFragmentBinding.inflate(inflater, container, false)
     return binding.root
@@ -30,6 +27,15 @@ class TrainingProcessFragment: TrainingConnection() {
       master = this@TrainingProcessFragment
       viewModel = this@TrainingProcessFragment.viewModel
     }
+
+    requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+      object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+          val state = viewModel.trainingState.value
+          if (state == TrainingState.TRAINING_ENDED || state == TrainingState.CANCELED) goBack()
+          else cancel()
+        }
+      })
   }
 
   fun changeStatus() {
@@ -46,5 +52,10 @@ class TrainingProcessFragment: TrainingConnection() {
   fun cancel() {
     viewModel.setTrainingState(TrainingState.CANCELED)
     sendMessageToCancel()
+    goBack()
+  }
+
+  private fun goBack() {
+    findNavController().popBackStack()
   }
 }

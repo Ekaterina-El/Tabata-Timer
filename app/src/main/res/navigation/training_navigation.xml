@@ -12,7 +12,8 @@
       android:label="TrainingSettingFragment" >
     <action
         android:id="@+id/action_trainingSettingFragment_to_trainingProcessFragment"
-        app:destination="@id/trainingProcessFragment" />
+        app:destination="@id/trainingProcessFragment"
+        app:popUpTo="@id/trainingSettingFragment" />
   </fragment>
   <fragment
       tools:layout="@layout/training_process_fragment"
