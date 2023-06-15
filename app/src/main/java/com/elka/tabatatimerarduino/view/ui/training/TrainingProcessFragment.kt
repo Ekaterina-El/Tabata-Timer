@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.elka.tabatatimerarduino.databinding.TrainingProcessFragmentBinding
+import com.elka.tabatatimerarduino.service.models.TrainingState
 import com.elka.tabatatimerarduino.viewModel.TrainingViewModel
 
-class TrainingProcessFragment: Fragment() {
-  private val viewModel by activityViewModels<TrainingViewModel>()
+class TrainingProcessFragment: TrainingConnection() {
   private lateinit var binding: TrainingProcessFragmentBinding
 
   override fun onCreateView(
@@ -33,6 +33,13 @@ class TrainingProcessFragment: Fragment() {
   }
 
   fun changeStatus() {
-
+    val state = viewModel.trainingState.value
+    if (state == TrainingState.TRAINING) {
+      viewModel.setTrainingState(TrainingState.PAUSE_PHONE)
+      sendMessageToPause()
+    } else if (state == TrainingState.PAUSE_PHONE) {
+      viewModel.setTrainingState(TrainingState.TRAINING)
+      sendMessageToResume()
+    }
   }
 }

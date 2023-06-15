@@ -76,8 +76,27 @@ abstract class TrainingConnection: BaseFragment() {
   }
 
   fun sendMessageToStartTrain(cycles: Int, sets: Int, work: Int, rest: Int, restBetweenSets: Int) {
-    val message = listOf(1, cycles, sets, work, rest, restBetweenSets).joinToString(", ")
+    val message = listOf(START_TRAIN_CODE.toInt(), cycles, sets, work, rest, restBetweenSets).joinToString(", ")
     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     sendMessage(message)
+  }
+
+  fun sendMessageToResume() {
+    sendMessage(RESUME_CODE)
+  }
+
+  fun sendMessageToPause() {
+    sendMessage(PAUSE_CODE)
+  }
+
+  fun sendMessageToCancel() {
+    sendMessage(CANCEL_CODE)
+  }
+
+  companion object {
+    const val START_TRAIN_CODE = "1"
+    const val PAUSE_CODE = "2"
+    const val CANCEL_CODE = "3"
+    const val RESUME_CODE = "4"
   }
 }
