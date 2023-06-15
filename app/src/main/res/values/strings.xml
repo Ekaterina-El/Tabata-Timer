@@ -22,4 +22,6 @@
   <string name="train_times">Work: %1$s / Rest: %2$s - %3$s</string>
   <string name="resume_training_session">Resume</string>
   <string name="pause_training_session">Pause</string>
+  <string name="cancel_training">Cancel</string>
+  <string name="training_session_canced">Training session canceled</string>
 </resources>

@@ -6,4 +6,5 @@ enum class TrainingState {
   PAUSE_ARDUINO,
   PAUSE_PHONE,
   TRAINING_ENDED,
+  CANCELED
 }

@@ -86,4 +86,10 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAllCaps">false</item>
   </style>
+
+  <style name="button.danger" parent="button">
+    <item name="android:backgroundTint">@color/danger</item>
+  </style>
+
+  <color name="danger">#FF5649</color>
 </resources>

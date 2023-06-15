@@ -9,12 +9,13 @@ import com.elka.tabatatimerarduino.service.models.TrainingState
 
 @BindingAdapter("app:trainingState")
 fun updateTrainingState(textView: TextView, trainingState: TrainingState) {
-  val stateRes = when(trainingState) {
-    TrainingState.NO_TRAINING -> null
+  val stateRes = when (trainingState) {
     TrainingState.TRAINING -> R.string.training_session_is_active
     TrainingState.PAUSE_ARDUINO -> R.string.training_session_paused_by_arduino
     TrainingState.PAUSE_PHONE -> R.string.training_session_paused_by_phone
     TrainingState.TRAINING_ENDED -> R.string.training_session_ended
+    TrainingState.CANCELED -> R.string.training_session_canced
+    else -> null
   }
 
   stateRes?.let { textView.setText(it) }
@@ -28,13 +29,10 @@ fun setStateAndCycles(textView: TextView, sets: Int, cycles: Int) {
 
 @BindingAdapter("app:trainingStateBtn")
 fun setTrainingStateBtn(button: Button, trainingState: TrainingState) {
-  val stateRes = when(trainingState) {
+  val stateRes = when (trainingState) {
     TrainingState.TRAINING -> R.string.pause_training_session
     TrainingState.PAUSE_PHONE -> R.string.resume_training_session
-    TrainingState.PAUSE_ARDUINO,
-    TrainingState.TRAINING_ENDED,
-    TrainingState.NO_TRAINING -> null
-
+    else -> null
   }
 
   if (stateRes == null) {
@@ -45,12 +43,22 @@ fun setTrainingStateBtn(button: Button, trainingState: TrainingState) {
   }
 }
 
+@BindingAdapter("app:trainingStateCancelBtn")
+fun setTrainingStateCancelBtn(button: Button, trainingState: TrainingState) {
+  button.visibility =
+    if (trainingState == TrainingState.NO_TRAINING
+      || trainingState == TrainingState.TRAINING_ENDED
+      || trainingState == TrainingState.CANCELED) View.INVISIBLE
+    else View.VISIBLE
+}
+
 @BindingAdapter("app:workTime", "app:restTime", "app:restBtwSetsTime", requireAll = true)
 fun setTrainTimes(textView: TextView, workTime: Int, restTime: Int, restBtwSetsTime: Int) {
   val workTimeS = workTime.toTime()
   val restTimeS = restTime.toTime()
   val restBtwSetsTimeS = restBtwSetsTime.toTime()
-  val text = textView.context.getString(R.string.train_times, workTimeS, restTimeS, restBtwSetsTimeS)
+  val text =
+    textView.context.getString(R.string.train_times, workTimeS, restTimeS, restBtwSetsTimeS)
   textView.text = text
 }
 

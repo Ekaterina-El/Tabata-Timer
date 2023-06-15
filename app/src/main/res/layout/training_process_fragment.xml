@@ -49,7 +49,14 @@
         android:layout_marginTop="30dp"
         android:paddingHorizontal="100dp"
         app:trainingStateBtn="@{viewModel.trainingState}"
-        tools:text="@string/lets_go"
+        tools:text="@string/pause_training_session"
         style="@style/button" />
+
+    <Button
+        app:trainingStateCancelBtn="@{viewModel.trainingState}"
+        android:onClick="@{() -> master.cancel()}"
+        android:paddingHorizontal="100dp"
+        android:text="@string/cancel_training"
+        style="@style/button.danger" />
   </LinearLayout>
 </layout>

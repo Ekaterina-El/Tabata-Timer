@@ -42,4 +42,9 @@ class TrainingProcessFragment: TrainingConnection() {
       sendMessageToResume()
     }
   }
+
+  fun cancel() {
+    viewModel.setTrainingState(TrainingState.CANCELED)
+    sendMessageToCancel()
+  }
 }
